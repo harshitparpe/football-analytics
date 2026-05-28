@@ -44,3 +44,6 @@ class Team(db.Model):
 
     def __repr__(self):
         return f'<Team {self.name} ({self.confederation})>'
+    
+
+
