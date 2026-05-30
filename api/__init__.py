@@ -32,10 +32,12 @@ def create_app(env=None):
     from api.routes.teams import teams_bp
     from api.routes.players import players_bp
     from api.routes.auth import auth_bp
+    from api.routes.predictions import predictions_bp        # ← add
 
-    app.register_blueprint(teams_bp,   url_prefix='/api/teams')
-    app.register_blueprint(players_bp, url_prefix='/api/players')
-    app.register_blueprint(auth_bp,    url_prefix='/api/auth')
+    app.register_blueprint(teams_bp,      url_prefix='/api/teams')
+    app.register_blueprint(players_bp,    url_prefix='/api/players')
+    app.register_blueprint(auth_bp,       url_prefix='/api/auth')
+    app.register_blueprint(predictions_bp, url_prefix='/api/predict')  # ← add
 
     @app.get('/health')
     def health():

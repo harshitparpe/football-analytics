@@ -30,10 +30,12 @@ from api.models import Team, Player, Match, MatchStat, Prediction
 # ─── helpers ────────────────────────────────────────────────────────────────
 
 def clean_str(val):
-    """Strip whitespace; return None for NaN/empty."""
     if pd.isna(val):
         return None
-    return str(val).strip()
+    s = str(val).strip().strip("'\"")
+    if s.startswith('rn">'):
+        s = s[4:]
+    return s
 
 
 def safe_int(val):

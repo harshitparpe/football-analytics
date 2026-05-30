@@ -7,7 +7,7 @@ class Prediction(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     match_id = db.Column(db.Integer, db.ForeignKey('matches.id'),
-                         nullable=False, unique=True)   # unique = one per match
+                         nullable=True, unique=False)    # ← nullable, not unique
     prob_team_a = db.Column(db.Float, nullable=False)
     prob_team_b = db.Column(db.Float, nullable=False)
     prob_draw = db.Column(db.Float, nullable=False)
