@@ -8,8 +8,7 @@ Pattern used: one schema per model, with a nested variant for
 embedded relationships (e.g. PlayerSchema inside TeamDetailSchema).
 """
 
-from marshmallow import Schema, fields, validate, ValidationError
-
+from marshmallow import Schema, fields, validate, ValidationError, EXCLUDE
 
 # ── Team ─────────────────────────────────────────────────────────────────────
 
@@ -124,8 +123,11 @@ class PredictRequestSchema(Schema):
 
 class PenaltyRequestSchema(Schema):
     """Validates POST /api/penalty/simulate body."""
+    class Meta:
+        unknown = EXCLUDE
     shooter_id = fields.Int(required=True)
     keeper_id  = fields.Int(required=True)
+    kicks      = fields.Int(load_default=5)
 
 
 # ── Instantiate for import convenience ───────────────────────────────────────
