@@ -28,7 +28,10 @@ def create_app(env=None):
     from api.routes.players     import players_bp
     from api.routes.auth        import auth_bp
     from api.routes.predictions import predictions_bp
-    from api.routes.penalty     import penalty_bp          # ← add
+    from api.routes.penalty     import penalty_bp    
+    from api.models.user        import User          # ← add
+
+    __all__ = ['Team', 'Player', 'Match', 'MatchStat', 'Prediction', 'User']      # ← add
 
     app.register_blueprint(teams_bp,       url_prefix='/api/teams')
     app.register_blueprint(players_bp,     url_prefix='/api/players')

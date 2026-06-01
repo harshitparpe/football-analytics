@@ -12,11 +12,13 @@ from flask import Blueprint, jsonify, request
 from marshmallow import ValidationError
 from api.schemas.schemas import predict_req_schema
 from api.services.prediction_service import PredictionService
+from flask_jwt_extended import jwt_required    # ← add import
+
 
 predictions_bp = Blueprint('predictions', __name__)
 
-
 @predictions_bp.post('/match')
+@jwt_required()
 def predict_match():
     """
     POST /api/predict/match

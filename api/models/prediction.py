@@ -12,7 +12,7 @@ class Prediction(db.Model):
     prob_team_b = db.Column(db.Float, nullable=False)
     prob_draw = db.Column(db.Float, nullable=False)
     model_version = db.Column(db.String(20), default='v1.0')
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(datetime.UTC))
 
     # Relationship
     match = db.relationship('Match', back_populates='prediction')

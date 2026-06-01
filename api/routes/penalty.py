@@ -15,6 +15,7 @@ from marshmallow import ValidationError
 from api.models import Player
 from api.schemas.schemas import penalty_req_schema
 from api.services.penalty_service import Shooter, Keeper, PenaltyEngine
+from flask_jwt_extended import jwt_required    # ← add import
 
 penalty_bp = Blueprint('penalty', __name__)
 
@@ -38,6 +39,7 @@ def _build_keeper(player: Player) -> Keeper:
 
 
 @penalty_bp.post('/simulate')
+@jwt_required()
 def simulate_penalty():
     """
     POST /api/penalty/simulate
@@ -94,6 +96,7 @@ def simulate_penalty():
 
 
 @penalty_bp.post('/shootout')
+@jwt_required()
 def simulate_shootout():
     body = request.get_json(silent=True)
     if not body:
