@@ -7,8 +7,7 @@ Passwords are hashed with werkzeug — never stored in plaintext.
 
 from api.extensions import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
-
+from datetime import datetime, timezone
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -17,7 +16,7 @@ class User(db.Model):
     username     = db.Column(db.String(80),  nullable=False, unique=True)
     email        = db.Column(db.String(150), nullable=False, unique=True)
     password_hash= db.Column(db.String(256), nullable=False)
-    created_at   = db.Column(db.DateTime, default=lambda: datetime.now(datetime.UTC))
+    created_at   = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     is_active    = db.Column(db.Boolean, default=True)
 
     def set_password(self, password: str):
