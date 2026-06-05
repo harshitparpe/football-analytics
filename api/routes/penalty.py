@@ -37,6 +37,17 @@ def _build_keeper(player: Player) -> Keeper:
         save_skill = player.save_skill or 0.5,
     )
 
+def _fmt_player(p: Player) -> dict:
+    return {
+        'id':            p.id,
+        'name':          p.name,
+        'team':          p.team.name if p.team else None,
+        'position':      p.position,
+        'penalty_skill': round(p.penalty_skill or 0, 3),
+        'save_skill':    round(p.save_skill or 0, 3),
+        'goals':         p.goals,
+        'appearances':   p.appearances,
+    }
 
 @penalty_bp.post('/simulate')
 @jwt_required()
@@ -132,36 +143,23 @@ def simulate_shootout():
 
 @penalty_bp.get('/players')
 def penalty_players():
-    """
-    GET /api/penalty/players?shooters=15&keepers=10
-
-    Returns top shooters and keepers in a single call.
-    Saves the frontend from making two separate requests.
-    """
-    n_shooters = min(request.args.get('shooters', 20, type=int), 50)
-    n_keepers  = min(request.args.get('keepers',  15, type=int), 30)
+    n_shooters = min(request.args.get('shooters', 50, type=int), 200)
+    n_keepers  = min(request.args.get('keepers',  50, type=int), 200)
 
     shooters = Player.query.filter(
-        Player.position.in_(['FWD', 'MID']),
-        Player.penalty_skill >= 0.60,
+        Player.position.in_(['FWD', 'MID', 'DEF']),  # include DEF too
+        Player.penalty_skill >= 0.50,                 # lower threshold from 0.60
+        Player.appearances >= 2,                      # filter out 1-appearance noise
     ).order_by(Player.penalty_skill.desc()).limit(n_shooters).all()
 
     keepers = Player.query.filter_by(
         position='GK'
+    ).filter(
+        Player.appearances >= 2                       # filter out 1-appearance GKs
     ).order_by(Player.save_skill.desc()).limit(n_keepers).all()
 
-    def fmt(p):
-        return {
-            'id':           p.id,
-            'name':         p.name,
-            'team':         p.team.name if p.team else None,
-            'position':     p.position,
-            'penalty_skill':round(p.penalty_skill, 3),
-            'save_skill':   round(p.save_skill, 3),
-            'goals':        p.goals,
-        }
-
     return jsonify({
-        'shooters': [fmt(p) for p in shooters],
-        'keepers':  [fmt(p) for p in keepers],
+        'shooters': [_fmt_player(p) for p in shooters],
+        'keepers':  [_fmt_player(p) for p in keepers],
     })
+

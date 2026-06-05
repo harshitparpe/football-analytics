@@ -70,17 +70,12 @@ def top_scorers():
 
 @players_bp.get('/penalty-takers')
 def penalty_takers():
-    """
-    GET /api/players/penalty-takers?limit=20
-    Returns outfield players sorted by penalty_skill DESC.
-    Used to populate the shooter dropdown in the penalty simulator.
-    """
-    limit   = request.args.get('limit', 20, type=int)
+    limit   = request.args.get('limit', 50, type=int)
     players = Player.query.filter(
-        Player.position.in_(['FWD', 'MID']),
-        Player.penalty_skill >= 0.65
+        Player.position.in_(['FWD', 'MID', 'DEF']),
+        Player.penalty_skill >= 0.50,
+        Player.appearances >= 2,
     ).order_by(Player.penalty_skill.desc()).limit(limit).all()
-
     return jsonify({'penalty_takers': players_schema.dump(players)})
 
 
