@@ -7,3 +7,25 @@
     @apply bg-gray-950 text-gray-100 min-h-screen;
   }
 }
+
+/* Thin scrollbar for player lists */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 2px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Hide scrollbar on mobile */
+@media (max-width: 768px) {
+  * {
+    scrollbar-width: none;
+  }
+}

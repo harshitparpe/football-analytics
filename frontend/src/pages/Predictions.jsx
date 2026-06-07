@@ -6,6 +6,8 @@ import ProbabilityChart from '../components/predictions/ProbabilityChart'
 import HeadToHead       from '../components/predictions/HeadToHead'
 import ModelInfo        from '../components/predictions/ModelInfo'
 import LoadingSpinner   from '../components/LoadingSpinner'
+import Toast from '../components/Toast'
+import { useToast } from '../hooks/useToast'
 
 export default function Predictions() {
   const [teamAId, setTeamAId] = useState(null)
@@ -14,6 +16,8 @@ export default function Predictions() {
   const [h2h,     setH2h]     = useState(null)
   const [loading, setLoading] = useState(false)
   const [error,   setError]   = useState('')
+
+  const { toast, showToast, clearToast } = useToast()
 
   const { data: teamsData, loading: teamsLoading } =
     useFetch(() => teamsAPI.getAll({ per_page: 83 }))
@@ -37,6 +41,7 @@ export default function Predictions() {
         teamsAPI.headToHead(teamAId, teamBId),
       ])
       setResult(predRes.data)
+      showToast(`${predRes.data.favourite} predicted to win!`)
       setH2h(h2hRes.data)
     } catch (err) {
       setError(err.response?.data?.error || 'Prediction failed. Try again.')
@@ -174,6 +179,7 @@ export default function Predictions() {
         </div>
 
       </div>
+      {toast && <Toast message={toast.message} type={toast.type} onDone={clearToast} key={toast.id} />}
     </div>
   )
 }
