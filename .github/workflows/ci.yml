@@ -1,0 +1,128 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  # ── Backend: lint + test ────────────────────────────────────────────────────
+  backend:
+    name: Backend (lint + test)
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB:       football_test
+          POSTGRES_USER:     postgres
+          POSTGRES_PASSWORD: testpass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          # Stop build on syntax errors or undefined names
+          flake8 api/ ml/ etl/ tests/ \
+            --count \
+            --select=E9,F63,F7,F82 \
+            --show-source \
+            --statistics
+          # Warn on style issues but don't fail
+          flake8 api/ ml/ etl/ tests/ \
+            --count \
+            --exit-zero \
+            --max-line-length=100 \
+            --statistics
+
+      - name: Run pytest
+        env:
+          FLASK_ENV:      testing
+          SECRET_KEY:     test-secret-key-for-ci-only
+          JWT_SECRET_KEY: test-jwt-key-for-ci-only-32chars
+          DATABASE_URL:   postgresql://postgres:testpass@localhost:5432/football_test
+        run: |
+          pytest tests/ -v --tb=short
+
+  # ── Frontend: install + build ───────────────────────────────────────────────
+  frontend:
+    name: Frontend (build)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build React app
+        working-directory: frontend
+        run: npm run build
+
+      - name: Check build output exists
+        run: |
+          test -d frontend/dist && echo "Build succeeded" || exit 1
+
+  # ── Docker: build images ─────────────────────────────────────────────────────
+  docker:
+    name: Docker (build images)
+    runs-on: ubuntu-latest
+    needs: [ backend, frontend ]   # only runs if both pass
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          dockerfile: Dockerfile
+          push: false
+          tags: football-analytics-backend:latest
+          cache-from: type=gx,scope=backend
+          cache-to:   type=gx,scope=backend,mode=max
+
+      - name: Build frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          dockerfile: frontend/Dockerfile
+          push: false
+          tags: football-analytics-frontend:latest
+          cache-from: type=gx,scope=frontend
+          cache-to:   type=gx,scope=frontend,mode=max

@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+
+  # ── PostgreSQL ───────────────────────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: football_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       football_analytics
+      POSTGRES_USER:     postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"     # 5433 on host so it doesn't clash with local PostgreSQL 18
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Flask backend ─────────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: football_backend
+    restart: unless-stopped
+    environment:
+      FLASK_ENV:        production
+      DATABASE_URL:     postgresql://postgres:${DB_PASSWORD:-postgres}@db:5432/football_analytics
+      SECRET_KEY:       ${SECRET_KEY:-change-me-in-production-32chars}
+      JWT_SECRET_KEY:   ${JWT_SECRET_KEY:-change-jwt-secret-32chars-min}
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./ml:/app/ml          # persist trained model
+      - ./data:/app/data      # dataset CSVs for re-seeding
+    command: >
+      sh -c "
+        flask --app run db upgrade &&
+        python run.py
+      "
+
+  # ── React + Nginx frontend ────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: football_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
