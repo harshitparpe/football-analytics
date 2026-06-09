@@ -40,7 +40,7 @@ export default function TopScorers({ scorers }) {
             {/* Goal bar */}
             <div className="ml-7 bg-gray-800 rounded-full h-1.5 overflow-hidden">
               <div
-                className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                className="h-full bg-green-300 rounded-full transition-all duration-500"
                 style={{ width: `${(p.goals / max) * 100}%` }}
               />
             </div>

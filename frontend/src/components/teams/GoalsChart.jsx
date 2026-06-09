@@ -62,7 +62,7 @@ export default function GoalsChart({ matches, teamName }) {
         </div>
         <div className="flex gap-4 text-xs">
           <span className="flex items-center gap-1.5">
-            <span className="w-3 h-0.5 bg-blue-500 inline-block rounded" />
+            <span className="w-3 h-0.5 bg-green-200 inline-block rounded" />
             Scored
           </span>
           <span className="flex items-center gap-1.5">
@@ -96,9 +96,9 @@ export default function GoalsChart({ matches, teamName }) {
             type="monotone"
             dataKey="scored"
             name="Scored"
-            stroke="#3b82f6"
+            stroke="#C2F970"
             strokeWidth={2}
-            dot={{ fill: '#3b82f6', r: 3 }}
+            dot={{ fill: '#C2F970', r: 3 }}
             activeDot={{ r: 5 }}
           />
           <Line

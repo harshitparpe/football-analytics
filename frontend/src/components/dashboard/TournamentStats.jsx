@@ -71,8 +71,8 @@ export default function TournamentStats() {
               {chartData.map((entry, idx) => (
                 <Cell
                   key={idx}
-                  fill={entry.goals >= 4 ? '#f59e0b' :
-                        entry.goals >= 3 ? '#3b82f6' : '#6b7280'}
+                  fill={entry.goals >= 8 ? '#FF3366' :
+                        entry.goals >= 7 ? '#F2E94E' : '#00A5E0'}
                 />
               ))}
             </Bar>
@@ -82,16 +82,16 @@ export default function TournamentStats() {
 
       <div className="flex gap-4 mt-3 text-xs text-gray-500">
         <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-amber-500 inline-block"/>
-          4+ goals
+          <span className="w-2.5 h-2.5 rounded-sm bg-red-500 inline-block"/>
+          8+ goals
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-sm bg-yellow-300 inline-block"/>
+          7–8 goals
         </span>
         <span className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-sm bg-blue-500 inline-block"/>
-          3–4 goals
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-gray-500 inline-block"/>
-          Under 3
+          Under 7
         </span>
       </div>
     </div>

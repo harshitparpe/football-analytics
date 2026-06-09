@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 
-const COLORS = ['#3b82f6', '#6b7280', '#f59e0b']
+const COLORS = ['#C2F970', '#6b7280', '#FF3366']
 
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload?.length) return null
@@ -48,9 +48,9 @@ export default function WinDonut({ stats }) {
       {/* Legend */}
       <div className="grid grid-cols-3 gap-2 mt-2">
         {[
-          { label: 'Wins',   value: stats.wins,   color: 'text-blue-400'  },
+          { label: 'Wins',   value: stats.wins,   color: 'text-green-200'  },
           { label: 'Draws',  value: stats.draws,  color: 'text-gray-400'  },
-          { label: 'Losses', value: stats.losses, color: 'text-amber-400' },
+          { label: 'Losses', value: stats.losses, color: 'text-red-500' },
         ].map(({ label, value, color }) => (
           <div key={label} className="text-center">
             <div className={`text-xl font-bold ${color}`}>{value ?? 0}</div>
