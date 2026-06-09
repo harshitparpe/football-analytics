@@ -43,7 +43,7 @@ services:
       - ./data:/app/data      # dataset CSVs for re-seeding
     command: >
       sh -c "
-        flask --app run db upgrade &&
+        python -m flask --app run db upgrade &&
         python run.py
       "
 
