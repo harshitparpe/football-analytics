@@ -13,7 +13,7 @@ def create_app(env=None):
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
-    cors.init_app(app, resources={r"/api/*": {"origins": "*"}})
+    cors.init_app(app, resources={r"/api/*": {"origins": ["https://your-app.vercel.app", "http://localhost:5173"]}})
 
     # Import models so Flask-Migrate can detect them
     # from api.models import team, player, match, match_stat, prediction  # noqa
