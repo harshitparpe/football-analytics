@@ -1,7 +1,9 @@
-from flask import Flask, jsonify
+from flask import Flask, app, jsonify
+from flask_cors import CORS
 from api.config import config_map
 from api.extensions import db, migrate, jwt, cors
 import os
+
 
 def create_app(env=None):
     app = Flask(__name__)
@@ -13,7 +15,16 @@ def create_app(env=None):
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
-    cors.init_app(app, resources={r"/api/*": {"origins": ["https://football-analytics-s3kk.vercel.app/", "http://localhost:5173"]}})
+    CORS(
+        app,
+        resources={
+            r"/api/*": {
+                "origins": [
+                    "https://football-analytics-s3kk.vercel.app"
+                ]
+            }
+        }
+    )
 
     # Import models so Flask-Migrate can detect them
     # from api.models import team, player, match, match_stat, prediction  # noqa
