@@ -111,18 +111,18 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: Dockerfile
+          file: Dockerfile
           push: false
           tags: football-analytics-backend:latest
-          cache-from: type=gx,scope=backend
-          cache-to:   type=gx,scope=backend,mode=max
+          cache-from: type=gha,scope=backend
+          cache-to:   type=gha,scope=backend,mode=max
 
       - name: Build frontend image
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
-          dockerfile: frontend/Dockerfile
+          file: frontend/Dockerfile
           push: false
           tags: football-analytics-frontend:latest
-          cache-from: type=gx,scope=frontend
-          cache-to:   type=gx,scope=frontend,mode=max
+          cache-from: type=gha,scope=frontend
+          cache-to:   type=gha,scope=frontend,mode=max
