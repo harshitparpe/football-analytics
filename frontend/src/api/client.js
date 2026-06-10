@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-  baseURL: '/api',          // proxied to Flask via vite.config.js
+  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api',          // proxied to Flask via vite.config.js
   headers: {
     'Content-Type': 'application/json',
   },
