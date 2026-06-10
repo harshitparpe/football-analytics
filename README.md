@@ -4,21 +4,17 @@
 
 ## Badges
 
-```md
 ![CI](https://github.com/YOUR_USERNAME/football-analytics/workflows/CI%20Pipeline/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![React](https://img.shields.io/badge/React-18-61dafb)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-336791)
 ![License](https://img.shields.io/badge/license-MIT-green)
-```
 
 ## Links
 
-```md
 [Live Demo] (https://football-analytics-s3kk.vercel.app/) ·
 [API](https://football-analytics-production-7564.up.railway.app) ·
 [API Docs](#api-endpoints)
-```
 
 ## Features
 
