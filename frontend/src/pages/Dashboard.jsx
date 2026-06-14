@@ -1,6 +1,6 @@
 import { useFetch } from '../hooks/useFetch'
 import { teamsAPI, playersAPI } from '../api/client'
-import StatCard        from '../components/StatCard'
+import StatCard        from '../components/Statcard'
 import LoadingSpinner  from '../components/LoadingSpinner'
 import ErrorMessage    from '../components/ErrorMessage'
 import LeagueTable     from '../components/dashboard/LeagueTable'
