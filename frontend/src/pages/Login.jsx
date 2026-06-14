@@ -27,30 +27,29 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-bg px-4">
       <div className="w-full max-w-md">
 
-        {/* Header */}
         <div className="text-center mb-8">
-          <div className="text-4xl mb-3">⚽</div>
-          <h1 className="text-2xl font-bold text-white">FIFA Analytics</h1>
-          <p className="text-gray-400 mt-1 text-sm">World Cup Intelligence Platform</p>
+          <div className="eyebrow mb-2">FIFA World Cup Intelligence Platform</div>
+          <h1 className="font-display text-3xl font-semibold text-heading tracking-tight">
+            FOOTBALL ANALYTICS
+          </h1>
         </div>
 
-        {/* Card */}
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
-          <h2 className="text-lg font-semibold text-white mb-6">Sign in</h2>
+        <div className="card p-8">
+          <div className="eyebrow mb-6">Sign in</div>
 
           {error && (
-            <div className="bg-red-950 border border-red-800 text-red-300
-                            rounded-lg px-4 py-3 mb-5 text-sm">
+            <div className="border border-red-900 bg-red-950/40 text-red-300
+                            px-4 py-3 mb-5 text-sm font-mono">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1.5">Email</label>
+              <label className="eyebrow mb-2 block">Email</label>
               <input
                 type="email"
                 name="email"
@@ -58,13 +57,13 @@ export default function Login() {
                 onChange={handleChange}
                 required
                 placeholder="you@example.com"
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg
-                           px-4 py-2.5 text-white placeholder-gray-500
-                           focus:outline-none focus:border-blue-500 text-sm"
+                className="w-full bg-surface2 border border-border px-4 py-2.5
+                           text-sm text-heading placeholder-muted font-mono
+                           focus:outline-none focus:border-accent transition-colors"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1.5">Password</label>
+              <label className="eyebrow mb-2 block">Password</label>
               <input
                 type="password"
                 name="password"
@@ -72,28 +71,25 @@ export default function Login() {
                 onChange={handleChange}
                 required
                 placeholder="••••••••"
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg
-                           px-4 py-2.5 text-white placeholder-gray-500
-                           focus:outline-none focus:border-blue-500 text-sm"
+                className="w-full bg-surface2 border border-border px-4 py-2.5
+                           text-sm text-heading placeholder-muted font-mono
+                           focus:outline-none focus:border-accent transition-colors"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-blue-900
-                         disabled:text-blue-400 text-white font-medium rounded-lg
-                         py-2.5 mt-2 transition-colors text-sm"
+              className="w-full bg-accent hover:bg-accent2 disabled:bg-surface2
+           disabled:text-muted text-bg font-display font-semibold
+           py-2.5 mt-2 transition-colors text-sm"
             >
-              {loading ? 'Signing in...' : 'Sign in'}
+              {loading ? 'Signing in...' : 'Sign in'} 
             </button>
           </form>
 
-          <p className="text-center text-gray-500 text-sm mt-6">
-            No account?{' '}
-            <Link to="/register" className="text-blue-400 hover:text-blue-300">
-              Create one
-            </Link>
+          <p className="text-center text-muted text-sm mt-6 font-mono">
+            No account? <Link to="/register">Register</Link>
           </p>
         </div>
       </div>

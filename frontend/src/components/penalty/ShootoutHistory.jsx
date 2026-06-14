@@ -4,18 +4,18 @@ export default function ShootoutHistory({ kicks, shooter, keeper }) {
   const scored = kicks.filter(k => k.scored).length
 
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+    <div className="card p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-white font-semibold">Shootout Results</h3>
+        <div className="eyebrow">shootout_results</div>
         <div className="flex items-center gap-2">
           {kicks.map((k, i) => (
             <span
               key={i}
-              className={`w-7 h-7 rounded-full flex items-center justify-center
-                          text-xs font-bold
+              className={`w-7 h-7 flex items-center justify-center
+                          text-xs font-bold font-mono border
                           ${k.scored
-                            ? 'bg-green-800 text-green-300'
-                            : 'bg-red-900 text-red-300'}`}
+                            ? 'bg-green-900/30 border-green-700 text-green-300'
+                            : 'bg-red-900/30 border-red-700 text-red-300'}`}
             >
               {k.scored ? '✓' : '✗'}
             </span>
@@ -23,43 +23,41 @@ export default function ShootoutHistory({ kicks, shooter, keeper }) {
         </div>
       </div>
 
-      {/* Score summary */}
-      <div className="text-center py-3 mb-4 bg-gray-800 rounded-xl">
-        <div className="text-4xl font-black text-white">
+      <div className="text-center py-3 mb-4 bg-surface2 border border-border">
+        <div className="font-display text-4xl font-bold text-heading">
           {scored} / {kicks.length}
         </div>
-        <div className="text-gray-400 text-sm mt-1">
+        <div className="text-body text-sm mt-1 font-mono">
           {shooter?.name} vs {keeper?.name}
         </div>
-        <div className={`text-sm font-semibold mt-1
+        <div className={`text-sm font-semibold mt-1 font-mono
           ${scored >= kicks.length * 0.6 ? 'text-green-400' :
             scored >= kicks.length * 0.4 ? 'text-amber-400' : 'text-red-400'}`}>
-          {scored >= kicks.length * 0.6 ? '🔥 Hot streak' :
-           scored >= kicks.length * 0.4 ? '⚖️ Evenly matched' :
-           '🧤 Keeper dominates'}
+          {scored >= kicks.length * 0.6 ? 'Hot Streak' :
+           scored >= kicks.length * 0.4 ? 'Evenly Matched' :
+           'Keeper Dominates'}
         </div>
       </div>
 
-      {/* Kick-by-kick breakdown */}
       <div className="space-y-2">
         {kicks.map((k, i) => (
           <div
             key={i}
-            className={`flex items-start gap-3 p-3 rounded-lg text-xs
-              ${k.scored ? 'bg-green-950/40' : 'bg-gray-800/60'}`}
+            className={`flex items-start gap-3 p-3 text-xs border
+              ${k.scored ? 'bg-green-950/20 border-green-900/30' : 'bg-surface2 border-border'}`}
           >
-            <span className={`font-bold w-4 shrink-0 mt-0.5
+            <span className={`font-bold w-4 shrink-0 mt-0.5 font-mono
               ${k.scored ? 'text-green-400' : 'text-red-400'}`}>
               {k.kick_number}
             </span>
-            <span className={k.scored ? 'text-gray-300' : 'text-gray-500'}>
+            <span className={k.scored ? 'text-body' : 'text-muted'}>
               {k.reason}
             </span>
             <div className="ml-auto flex gap-1 shrink-0">
-              <span className="bg-gray-700 text-gray-400 px-1.5 py-0.5 rounded">
+              <span className="bg-surface text-muted px-1.5 py-0.5 font-mono border border-border">
                 {k.shot_direction}
               </span>
-              <span className="bg-gray-700 text-gray-400 px-1.5 py-0.5 rounded">
+              <span className="bg-surface text-muted px-1.5 py-0.5 font-mono border border-border">
                 {k.shot_height}
               </span>
             </div>

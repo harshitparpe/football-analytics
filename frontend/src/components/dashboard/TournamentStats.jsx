@@ -13,10 +13,9 @@ const YEARS = [1930,1934,1938,1950,1954,1958,1962,1966,1970,
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2
-                    text-xs shadow-xl">
-      <div className="text-gray-400 mb-1">{label} World Cup</div>
-      <div className="text-white font-semibold">
+    <div className="bg-surface2 border border-border px-3 py-2 text-xs shadow-xl">
+      <div className="text-muted mb-1">{label} World Cup</div>
+      <div className="text-heading font-semibold">
         {payload[0].value} avg goals/match
       </div>
     </div>
@@ -40,10 +39,10 @@ export default function TournamentStats() {
   }, [])
 
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+    <div className="card p-5">
       <div className="mb-4">
-        <h2 className="text-white font-semibold">Goals Per Match by Tournament</h2>
-        <p className="text-xs text-gray-500 mt-0.5">
+        <h2 className="text-heading font-semibold">Goals Per Match by Tournament</h2>
+        <p className="text-xs text-muted mt-0.5">
           Average goals scored per match across all World Cups
         </p>
       </div>
@@ -53,26 +52,26 @@ export default function TournamentStats() {
       ) : (
         <ResponsiveContainer width="100%" height={220}>
           <BarChart data={chartData} margin={{ top: 4, right: 8, bottom: 4, left: -20 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#003566" vertical={false} />
             <XAxis
               dataKey="year"
-              tick={{ fill: '#6b7280', fontSize: 11 }}
+              tick={{ fill: '#64748b', fontSize: 11 }}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              tick={{ fill: '#6b7280', fontSize: 11 }}
+              tick={{ fill: '#64748b', fontSize: 11 }}
               axisLine={false}
               tickLine={false}
               domain={[0, 6]}
             />
-            <Tooltip content={<CustomTooltip />} cursor={{ fill: '#ffffff10' }} />
-            <Bar dataKey="goals" radius={[4, 4, 0, 0]}>
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: '#FFC30010' }} />
+            <Bar dataKey="goals" radius={[0, 0, 0, 0]}>
               {chartData.map((entry, idx) => (
                 <Cell
                   key={idx}
-                  fill={entry.goals >= 8 ? '#FF3366' :
-                        entry.goals >= 7 ? '#F2E94E' : '#00A5E0'}
+                  fill={entry.goals >= 8 ? '#FFC300' :
+                        entry.goals >= 6 ? '#d00000' : '#003566 '}
                 />
               ))}
             </Bar>
@@ -80,18 +79,18 @@ export default function TournamentStats() {
         </ResponsiveContainer>
       )}
 
-      <div className="flex gap-4 mt-3 text-xs text-gray-500">
+      <div className="flex gap-4 mt-3 text-xs text-muted">
         <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-red-500 inline-block"/>
+          <span className="w-2.5 h-2.5 bg-accent inline-block"/>
           8+ goals
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-yellow-300 inline-block"/>
-          7–8 goals
+          <span className="w-2.5 h-2.5 bg-accent2 inline-block"/>
+          6–8 goals
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-blue-500 inline-block"/>
-          Under 7
+          <span className="w-2.5 h-2.5 bg-border inline-block"/>
+          Under 6 goals
         </span>
       </div>
     </div>
