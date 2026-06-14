@@ -23,13 +23,11 @@ class RegisterSchema(Schema):
 
     @validates('email')
     def validate_email_deliverable(self, value, **kwargs):
-        """
-        check_deliverability=True performs a DNS MX lookup on the domain.
-        Catches: malformed addresses, non-existent domains (typos like
-        gmial.com), and domains with no mail server configured.
-        """
         try:
-            validate_email(value, check_deliverability=True)
+            validate_email(
+                value,
+                check_deliverability=False
+            )
         except EmailNotValidError as e:
             raise ValidationError(f'Invalid email: {str(e)}')
 
