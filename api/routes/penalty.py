@@ -140,26 +140,27 @@ def simulate_shootout():
                     'skill': keeper_player.save_skill},
     }), 200
 
-
 @penalty_bp.get('/players')
 def penalty_players():
-    n_shooters = min(request.args.get('shooters', 50, type=int), 200)
-    n_keepers  = min(request.args.get('keepers',  50, type=int), 200)
-
+    """
+    GET /api/penalty/players
+    Returns ALL eligible shooters (FWD/MID/DEF with >=1 appearance)
+    and ALL keepers (GK with >=1 appearance). No skill threshold —
+    frontend search handles discoverability at this scale.
+    """
     shooters = Player.query.filter(
-        Player.position.in_(['FWD', 'MID', 'DEF']),  # include DEF too
-        Player.penalty_skill >= 0.50,                 # lower threshold from 0.60
-        Player.appearances >= 2,                      # filter out 1-appearance noise
-    ).order_by(Player.penalty_skill.desc()).limit(n_shooters).all()
+        Player.position.in_(['FWD', 'MID', 'DEF']),
+        Player.appearances >= 1,
+    ).order_by(Player.penalty_skill.desc()).all()
 
-    keepers = Player.query.filter_by(
-        position='GK'
-    ).filter(
-        Player.appearances >= 2                       # filter out 1-appearance GKs
-    ).order_by(Player.save_skill.desc()).limit(n_keepers).all()
+    keepers = Player.query.filter(
+        Player.position == 'GK',
+        Player.appearances >= 1,
+    ).order_by(Player.save_skill.desc()).all()
 
     return jsonify({
         'shooters': [_fmt_player(p) for p in shooters],
         'keepers':  [_fmt_player(p) for p in keepers],
+        'shooter_count': len(shooters),
+        'keeper_count':  len(keepers),
     })
-

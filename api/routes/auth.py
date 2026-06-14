@@ -1,46 +1,41 @@
-"""
-api/routes/auth.py
--------------------
-Blueprint: /api/auth
-
-Endpoints:
-  POST /api/auth/register   → create account, return JWT
-  POST /api/auth/login      → verify credentials, return JWT
-  GET  /api/auth/me         → return current user (protected)
-  POST /api/auth/logout     → client-side token discard (stateless JWT)
-
-JWT strategy:
-  - Tokens are stateless (no server-side session store)
-  - Access token expires in 1 hour
-  - Identity stored in token is user.id (int)
-  - Protected routes use @jwt_required() decorator
-"""
-
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import (
     create_access_token,
     jwt_required,
     get_jwt_identity,
 )
-from marshmallow import Schema, fields, ValidationError, validate
 
 from api.extensions import db
 from api.models.user import User
 
 auth_bp = Blueprint('auth', __name__)
 
+from marshmallow import Schema, fields, ValidationError, validate, validates
+from email_validator import validate_email, EmailNotValidError
 
-# ── Request schemas (defined inline — small enough to not need schemas.py) ───
 
 class RegisterSchema(Schema):
     username = fields.Str(required=True,
                           validate=validate.Length(min=3, max=80))
-    email    = fields.Email(required=True)
+    email    = fields.Str(required=True)
     password = fields.Str(required=True,
                           validate=validate.Length(min=6))
 
+    @validates('email')
+    def validate_email_deliverable(self, value, **kwargs):
+        """
+        check_deliverability=True performs a DNS MX lookup on the domain.
+        Catches: malformed addresses, non-existent domains (typos like
+        gmial.com), and domains with no mail server configured.
+        """
+        try:
+            validate_email(value, check_deliverability=True)
+        except EmailNotValidError as e:
+            raise ValidationError(f'Invalid email: {str(e)}')
+
+
 class LoginSchema(Schema):
-    email    = fields.Email(required=True)
+    email    = fields.Email(required=True)  # format check only on login is fine
     password = fields.Str(required=True)
 
 register_schema = RegisterSchema()
