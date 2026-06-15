@@ -1,0 +1,65 @@
+Year,Stage,Stadium,Home Team Name,Home Team Initials,Home Team Goals,Away Team Goals,Away Team Name,Away Team Initials,Win conditions,Group
+2022,Group Stage,Al Bayt Stadium,Qatar,QAT,0,2,Ecuador,ECU,,A
+2022,Group Stage,Al Thumama Stadium,England,ENG,6,2,IR Iran,IRN,,B
+2022,Group Stage,Lusail Stadium,Senegal,SEN,0,2,Netherlands,NED,,A
+2022,Group Stage,Khalifa International Stadium,USA,USA,1,1,Wales,WAL,,B
+2022,Group Stage,Education City Stadium,Argentina,ARG,1,2,Saudi Arabia,KSA,,C
+2022,Group Stage,Al Janoub Stadium,Denmark,DEN,0,0,Tunisia,TUN,,D
+2022,Group Stage,Ahmad bin Ali Stadium,Mexico,MEX,0,0,Poland,POL,,C
+2022,Group Stage,Stadium 974,France,FRA,4,1,Australia,AUS,,D
+2022,Group Stage,Al Thumama Stadium,Morocco,MAR,0,0,Croatia,CRO,,F
+2022,Group Stage,Education City Stadium,Germany,GER,1,2,Japan,JPN,,E
+2022,Group Stage,Al Bayt Stadium,Spain,ESP,7,0,Costa Rica,CRC,,E
+2022,Group Stage,Ahmad bin Ali Stadium,Belgium,BEL,1,0,Canada,CAN,,F
+2022,Group Stage,Lusail Stadium,Switzerland,SUI,1,0,Cameroon,CMR,,G
+2022,Group Stage,Al Janoub Stadium,Uruguay,URU,0,0,South Korea,KOR,,H
+2022,Group Stage,Khalifa International Stadium,Portugal,POR,3,2,Ghana,GHA,,H
+2022,Group Stage,Stadium 974,Brazil,BRA,2,0,Serbia,SRB,,G
+2022,Group Stage,Al Thumama Stadium,Wales,WAL,0,2,IR Iran,IRN,,B
+2022,Group Stage,Al Bayt Stadium,Qatar,QAT,1,3,Senegal,SEN,,A
+2022,Group Stage,Ahmad bin Ali Stadium,Netherlands,NED,1,1,Ecuador,ECU,,A
+2022,Group Stage,Khalifa International Stadium,England,ENG,0,0,USA,USA,,B
+2022,Group Stage,Al Janoub Stadium,Tunisia,TUN,0,1,Australia,AUS,,D
+2022,Group Stage,Education City Stadium,Poland,POL,2,0,Saudi Arabia,KSA,,C
+2022,Group Stage,Lusail Stadium,France,FRA,2,1,Denmark,DEN,,D
+2022,Group Stage,Stadium 974,Argentina,ARG,2,0,Mexico,MEX,,C
+2022,Group Stage,Al Bayt Stadium,Japan,JPN,0,1,Costa Rica,CRC,,E
+2022,Group Stage,Ahmad bin Ali Stadium,Belgium,BEL,0,2,Morocco,MAR,,F
+2022,Group Stage,Al Thumama Stadium,Croatia,CRO,4,1,Canada,CAN,,F
+2022,Group Stage,Khalifa International Stadium,Spain,ESP,1,1,Germany,GER,,E
+2022,Group Stage,Lusail Stadium,Cameroon,CMR,3,3,Serbia,SRB,,G
+2022,Group Stage,Education City Stadium,South Korea,KOR,2,3,Ghana,GHA,,H
+2022,Group Stage,Al Janoub Stadium,Brazil,BRA,1,0,Switzerland,SUI,,G
+2022,Group Stage,Al Bayt Stadium,Portugal,POR,2,0,Uruguay,URU,,H
+2022,Group Stage,Stadium 974,Ecuador,ECU,1,1,Senegal,SEN,,A
+2022,Group Stage,Khalifa International Stadium,Netherlands,NED,2,0,Qatar,QAT,,A
+2022,Group Stage,Al Thumama Stadium,IR Iran,IRN,0,2,USA,USA,,B
+2022,Group Stage,Ahmad bin Ali Stadium,Wales,WAL,0,3,England,ENG,,B
+2022,Group Stage,Lusail Stadium,Australia,AUS,1,0,Denmark,DEN,,D
+2022,Group Stage,Al Janoub Stadium,Tunisia,TUN,1,0,France,FRA,,D
+2022,Group Stage,Al Bayt Stadium,Poland,POL,2,2,Argentina,ARG,,C
+2022,Group Stage,Stadium 974,Saudi Arabia,KSA,1,2,Mexico,MEX,,C
+2022,Group Stage,Education City Stadium,Croatia,CRO,0,0,Belgium,BEL,,F
+2022,Group Stage,Khalifa International Stadium,Canada,CAN,1,2,Morocco,MAR,,F
+2022,Group Stage,Al Thumama Stadium,Japan,JPN,2,1,Spain,ESP,,E
+2022,Group Stage,Ahmad bin Ali Stadium,Costa Rica,CRC,2,4,Germany,GER,,E
+2022,Group Stage,Lusail Stadium,South Korea,KOR,2,3,Portugal,POR,,H
+2022,Group Stage,Al Janoub Stadium,Ghana,GHA,0,2,Uruguay,URU,,H
+2022,Group Stage,Al Bayt Stadium,Serbia,SRB,2,3,Switzerland,SUI,,G
+2022,Group Stage,Stadium 974,Cameroon,CMR,1,0,Brazil,BRA,,G
+2022,Round of 16,Khalifa International Stadium,Netherlands,NED,3,1,USA,USA,Netherlands win,
+2022,Round of 16,Al Thumama Stadium,Argentina,ARG,2,1,Australia,AUS,Argentina win,
+2022,Round of 16,Education City Stadium,France,FRA,3,1,Poland,POL,France win,
+2022,Round of 16,Al Bayt Stadium,England,ENG,3,0,Senegal,SEN,England win,
+2022,Round of 16,Stadium 974,Japan,JPN,1,1,Croatia,CRO,Croatia win on penalties (1-3),
+2022,Round of 16,Ahmad bin Ali Stadium,Brazil,BRA,4,1,South Korea,KOR,Brazil win,
+2022,Round of 16,Al Janoub Stadium,Morocco,MAR,0,0,Spain,ESP,Morocco win on penalties (3-0),
+2022,Round of 16,Lusail Stadium,Portugal,POR,6,1,Switzerland,SUI,Portugal win,
+2022,Quarter-finals,Lusail Stadium,Croatia,CRO,1,1,Brazil,BRA,Croatia win on penalties (4-2),
+2022,Quarter-finals,Al Thumama Stadium,Netherlands,NED,2,2,Argentina,ARG,Argentina win on penalties (4-3),
+2022,Quarter-finals,Al Bayt Stadium,Morocco,MAR,1,0,Portugal,POR,Morocco win,
+2022,Quarter-finals,Education City Stadium,England,ENG,1,2,France,FRA,France win,
+2022,Semi-finals,Lusail Stadium,Argentina,ARG,3,0,Croatia,CRO,Argentina win,
+2022,Semi-finals,Al Bayt Stadium,France,FRA,2,0,Morocco,MAR,France win,
+2022,Play-off for third place,Khalifa International Stadium,Croatia,CRO,2,1,Morocco,MAR,Croatia win,
+2022,Final,Lusail Stadium,Argentina,ARG,3,3,France,FRA,Argentina win on penalties (4-2),

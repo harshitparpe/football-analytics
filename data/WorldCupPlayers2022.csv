@@ -1,0 +1,132 @@
+team_name,player_name,position,goals,appearances
+Argentina,Lionel Messi,FWD,7,7
+Argentina,Julian Alvarez,FWD,4,7
+Argentina,Alexis Mac Allister,MID,1,7
+Argentina,Angel Di Maria,FWD,1,5
+Argentina,Nahuel Molina,DEF,1,7
+Argentina,Enzo Fernandez,MID,1,7
+Argentina,Emiliano Martinez,GK,0,7
+Argentina,Rodrigo De Paul,MID,0,7
+Argentina,Cristian Romero,DEF,0,7
+Argentina,Nicolas Otamendi,DEF,0,7
+France,Kylian Mbappe,FWD,8,7
+France,Olivier Giroud,FWD,4,7
+France,Antoine Griezmann,MID,2,7
+France,Ousmane Dembele,FWD,0,6
+France,Aurelien Tchouameni,MID,0,7
+France,Theo Hernandez,DEF,0,7
+France,Hugo Lloris,GK,0,7
+France,Raphael Varane,DEF,0,6
+France,Adrien Rabiot,MID,1,7
+France,Randal Kolo Muani,FWD,1,4
+Croatia,Luka Modric,MID,0,7
+Croatia,Ivan Perisic,FWD,3,7
+Croatia,Marko Livaja,FWD,1,3
+Croatia,Mislav Orsic,FWD,1,4
+Croatia,Bruno Petkovic,FWD,2,6
+Croatia,Dominik Livakovic,GK,0,7
+Croatia,Josko Gvardiol,DEF,1,7
+Morocco,Achraf Hakimi,DEF,1,7
+Morocco,Youssef En-Nesyri,FWD,3,7
+Morocco,Sofiane Boufal,MID,1,5
+Morocco,Hakim Ziyech,MID,1,5
+Morocco,Yassine Bounou,GK,0,7
+Morocco,Romain Saiss,DEF,1,6
+Brazil,Neymar,FWD,2,5
+Brazil,Vinicius Junior,FWD,1,5
+Brazil,Richarlison,FWD,3,4
+Brazil,Casemiro,MID,1,5
+Brazil,Raphinha,MID,0,5
+Brazil,Lucas Paqueta,MID,1,5
+Brazil,Alisson,GK,0,5
+Brazil,Thiago Silva,DEF,0,5
+Portugal,Cristiano Ronaldo,FWD,1,5
+Portugal,Goncalo Ramos,FWD,3,2
+Portugal,Bruno Fernandes,MID,2,5
+Portugal,Pepe,DEF,1,4
+Portugal,Rafael Leao,FWD,1,3
+Portugal,Diogo Costa,GK,0,5
+England,Harry Kane,FWD,2,5
+England,Jude Bellingham,MID,1,5
+England,Bukayo Saka,FWD,3,5
+England,Marcus Rashford,FWD,3,4
+England,Phil Foden,MID,1,4
+England,Jordan Pickford,GK,0,5
+England,Raheem Sterling,FWD,1,3
+Netherlands,Memphis Depay,FWD,2,5
+Netherlands,Cody Gakpo,FWD,3,5
+Netherlands,Wout Weghorst,FWD,2,2
+Netherlands,Frenkie de Jong,MID,0,5
+Netherlands,Virgil van Dijk,DEF,0,5
+Netherlands,Andries Noppert,GK,0,4
+Spain,Alvaro Morata,FWD,1,3
+Spain,Ferran Torres,FWD,2,3
+Spain,Marco Asensio,MID,1,3
+Spain,Gavi,MID,1,4
+Spain,Dani Olmo,MID,1,4
+Spain,Pedri,MID,0,4
+Spain,Unai Simon,GK,0,4
+Germany,Kai Havertz,FWD,1,3
+Germany,Niclas Fullkrug,FWD,2,2
+Germany,Ilkay Gundogan,MID,1,3
+Germany,Jamal Musiala,MID,1,3
+Germany,Thomas Muller,FWD,0,3
+Germany,Manuel Neuer,GK,0,3
+Switzerland,Breel Embolo,FWD,1,4
+Switzerland,Xherdan Shaqiri,MID,1,4
+Switzerland,Granit Xhaka,MID,0,4
+Switzerland,Yann Sommer,GK,0,4
+Belgium,Romelu Lukaku,FWD,0,3
+Belgium,Eden Hazard,FWD,0,3
+Belgium,Kevin De Bruyne,MID,0,3
+Belgium,Michy Batshuayi,FWD,1,3
+Belgium,Thibaut Courtois,GK,0,3
+Senegal,Sadio Mane,FWD,0,0
+Senegal,Ismaila Sarr,FWD,1,4
+Senegal,Boulaye Dia,FWD,1,3
+Senegal,Edouard Mendy,GK,0,4
+Japan,Ritsu Doan,FWD,2,4
+Japan,Daizen Maeda,FWD,1,4
+Japan,Takuma Asano,FWD,1,4
+Japan,Shuichi Gonda,GK,0,4
+South Korea,Cho Gue-sung,FWD,2,4
+South Korea,Son Heung-min,FWD,0,4
+South Korea,Kim Min-jae,DEF,0,4
+South Korea,Kim Seung-gyu,GK,0,4
+Australia,Mathew Leckie,FWD,1,4
+Australia,Craig Goodwin,FWD,1,4
+Australia,Mitchell Duke,FWD,1,4
+Australia,Mathew Ryan,GK,0,4
+United States,Christian Pulisic,MID,1,4
+United States,Timothy Weah,FWD,1,4
+United States,Weston McKennie,MID,0,4
+United States,Matt Turner,GK,0,4
+Poland,Robert Lewandowski,FWD,2,4
+Poland,Piotr Zielinski,MID,1,4
+Poland,Wojciech Szczesny,GK,0,4
+Mexico,Henry Martin,FWD,1,3
+Mexico,Luis Chavez,MID,1,3
+Mexico,Guillermo Ochoa,GK,0,3
+Saudi Arabia,Salem Al-Dawsari,FWD,2,3
+Saudi Arabia,Saleh Al-Shehri,FWD,1,3
+Saudi Arabia,Mohammed Al-Owais,GK,0,3
+Ecuador,Enner Valencia,FWD,3,3
+Ecuador,Moises Caicedo,MID,0,3
+Tunisia,Wahbi Khazri,FWD,1,3
+Tunisia,Aissa Laidouni,MID,0,3
+Cameroon,Vincent Aboubakar,FWD,2,3
+Cameroon,Eric Maxim Choupo-Moting,FWD,1,3
+Ghana,Mohammed Kudus,FWD,2,3
+Ghana,Andre Ayew,FWD,1,3
+Serbia,Dusan Vlahovic,FWD,1,3
+Serbia,Aleksandar Mitrovic,FWD,2,2
+Costa Rica,Keysher Fuller,DEF,1,3
+Uruguay,Darwin Nunez,FWD,0,2
+Uruguay,Federico Valverde,MID,0,3
+Wales,Gareth Bale,FWD,1,3
+Wales,Wayne Hennessey,GK,0,3
+Canada,Alphonso Davies,DEF,1,3
+Canada,Jonathan David,FWD,0,3
+Denmark,Andreas Christensen,DEF,0,3
+Qatar,Hassan Al-Haydos,MID,0,3
+Iran,Mehdi Taremi,FWD,2,3
