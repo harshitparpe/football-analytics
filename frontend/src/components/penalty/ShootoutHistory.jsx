@@ -4,7 +4,7 @@ export default function ShootoutHistory({ kicks, shooter, keeper }) {
   const scored = kicks.filter(k => k.scored).length
 
   return (
-    <div className="card p-5">
+    <div className="card h-full p-5 overflow-y-auto scrollbar-thin">
       <div className="flex items-center justify-between mb-4">
         <div className="eyebrow">shootout_results</div>
         <div className="flex items-center gap-2">

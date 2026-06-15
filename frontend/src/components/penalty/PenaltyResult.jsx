@@ -62,7 +62,7 @@ export default function PenaltyResult({ result, animating }) {
 
   if (animating) {
     return (
-      <div className="card p-8 flex flex-col items-center justify-center min-h-48">
+      <div className="card h-full p-8 flex flex-col items-center justify-center min-h-48">
         <div className="text-5xl animate-bounce mb-4">⚽</div>
         <div className="eyebrow">taking the penalty...</div>
       </div>
@@ -81,8 +81,8 @@ export default function PenaltyResult({ result, animating }) {
   const headline = scored ? 'GOAL' : isMiss ? 'MISSED' : 'SAVED'
 
   return (
-    <div className={`card border ${borderC} p-5 transition-all duration-500
-                     ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`card h-full border ${borderC} p-5 overflow-y-auto scrollbar-thin transition-all duration-500
+                 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
 
       <div className="text-center mb-2">
         <div className="text-5xl mb-2">{scored ? '🥅' : isMiss ? '😬' : '🧤'}</div>

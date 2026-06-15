@@ -142,21 +142,28 @@ export default function Predictions() {
             </div>
           )}
 
-          {h2h && !loading && (
-            <div className="card p-5">
-              <h2 className="text-heading font-semibold mb-4">Head to Head</h2>
-              <HeadToHead h2h={h2h} />
-            </div>
-          )}
-        </div>
-
-        <div>
+          {/* Model Info now lives in the left column */}
           <div className="card p-5">
             <h2 className="text-heading font-semibold mb-4">Model Info</h2>
             <ModelInfo />
           </div>
+        </div>
 
-          <div className="mt-4 card p-4">
+        <div className="space-y-4">
+
+          {/* Head to Head now lives in the right column */}
+          <div className="card p-5">
+            <h2 className="text-heading font-semibold mb-4">Head to Head</h2>
+            {h2h && !loading ? (
+              <HeadToHead h2h={h2h} />
+            ) : (
+              <div className="text-center py-6 text-muted text-sm">
+                {loading ? 'Loading...' : 'Run a prediction to see head-to-head history'}
+              </div>
+            )}
+          </div>
+
+          <div className="card p-4">
             <div className="text-accent text-xs font-semibold mb-2 uppercase tracking-wider">
               How it works
             </div>
