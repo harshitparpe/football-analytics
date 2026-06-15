@@ -72,4 +72,11 @@ export const penaltyAPI = {
   shootout:    (data)    => client.post('/penalty/shootout', data),
 }
 
+export const wc2026API = {
+  getFixtures: () => client.get('/wc2026/fixtures'),
+  getStandings: () => client.get('/wc2026/standings'),
+  getSummary: () => client.get('/wc2026/summary'),
+  recordResult: (data) => client.post('/wc2026/result', data),
+}
+
 export default client

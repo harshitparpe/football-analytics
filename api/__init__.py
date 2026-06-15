@@ -26,29 +26,24 @@ def create_app(env=None):
         }
     )
 
-    # Import models so Flask-Migrate can detect them
-    # from api.models import team, player, match, match_stat, prediction  # noqa
-    import api.models.team
-    import api.models.player
-    import api.models.match
-    import api.models.match_stat
-    import api.models.prediction
-
     # Register Blueprints
     from api.routes.teams       import teams_bp
     from api.routes.players     import players_bp
     from api.routes.auth        import auth_bp
     from api.routes.predictions import predictions_bp
     from api.routes.penalty     import penalty_bp    
-    from api.models.user        import User          # ← add
+    from api.models.user        import User 
+    from api.models.wc2026_fixture import WC2026Fixture
+    from api.routes.wc2026 import wc2026_bp
 
-    __all__ = ['Team', 'Player', 'Match', 'MatchStat', 'Prediction', 'User']      # ← add
+    __all__ = ['Team', 'Player', 'Match', 'MatchStat', 'Prediction', 'User', 'WC2026Fixture']
 
     app.register_blueprint(teams_bp,       url_prefix='/api/teams')
     app.register_blueprint(players_bp,     url_prefix='/api/players')
     app.register_blueprint(auth_bp,        url_prefix='/api/auth')
     app.register_blueprint(predictions_bp, url_prefix='/api/predict')
     app.register_blueprint(penalty_bp,     url_prefix='/api/penalty')  # ← add
+    app.register_blueprint(wc2026_bp,      url_prefix='/api/wc2026')  # ← add
 
     @app.get('/health')
     def health():
