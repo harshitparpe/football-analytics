@@ -15,7 +15,7 @@
 
 [Live Demo](https://football-analytics-s3kk.vercel.app) ·
 [Backend API](https://football-analytics-production-7564.up.railway.app) ·
-[GitHub Repository]([https://github.com/YOUR_USERNAME/football-analytics](https://github.com/harshitparpe/football-analytics)
+[GitHub Repository](https://github.com/harshitparpe/football-analytics)
 
 ## Features
 
