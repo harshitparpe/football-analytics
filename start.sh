@@ -3,7 +3,7 @@
 set -e
 
 echo "Running database migrations..."
-flask db upgrade
+flask --app run:app db upgrade
 
 echo "Starting Flask application..."
 exec python run.py
