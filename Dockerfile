@@ -23,7 +23,4 @@ ENV DATABASE_URL=${DATABASE_URL:-sqlite:///app.db}
 ENV SECRET_KEY=${SECRET_KEY:-change-me-in-production-32chars}
 ENV JWT_SECRET_KEY=${JWT_SECRET_KEY:-change-jwt-secret-32chars-min}
 
-COPY start.sh .
-RUN chmod +x start.sh
-
-CMD ["./start.sh"]
+CMD ["python", "run.py"]
