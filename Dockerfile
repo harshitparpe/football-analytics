@@ -13,11 +13,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 RUN useradd -m appuser && chown -R appuser /app
+
+COPY start.sh .
+RUN chmod +x start.sh && chown appuser:appuser start.sh
+
 USER appuser
 
 EXPOSE 5000
 
-COPY start.sh .
-RUN chmod +x start.sh
+ENV FLASK_ENV=production
 
 CMD ["./start.sh"]
